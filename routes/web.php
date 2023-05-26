@@ -15,3 +15,4 @@ use App\Http\Controllers\NoticiasController;
 */
 
 Route::get('/',[NoticiasController::class,'index']);
+Route::get('/noticias',[NoticiasController::class,'getNoticias']);

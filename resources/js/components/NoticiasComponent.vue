@@ -10,18 +10,38 @@
          <a href="#" class="card-link">Another link</a>
   </div>
 </div>
+<div class="card">
+    <div v-for="noticia in noticias" :key=noticia.id>
+        <div class="card-body">
+            <h3 class="card-title">{{ noticia.titulo }}</h3>
+            <p class="card-text">{{noticia.descripcion}}</p>
+        </div>
+    </div>
+  </div>
 
 </template>
 
 <script>
 import axios from 'axios';
 
-export default{
-    data(){
-        return{
-            noticias:[]
-        };
+export default {
+  data() {
+    return {
+      noticias: [] 
+    };
+  },
+  mounted() {
+    this.obtenerNoticias();
+  },
+  methods: {
+    obtenerNoticias() {
+      axios.get('/noticias')
+        .then(response => {
+          this.noticias = response.data;
+        })
+      
     }
+  }
 }
 
 
